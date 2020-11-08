@@ -1,5 +1,5 @@
 #!/bin/bash
-#Gauszton_skrypt_v_1
+#Gauszton_skrypt_v_1_1
 echo "##########################################################################################################################";
 echo "#";
 echo "#   Power Gauszton skrypt, wszyskiego co potrzebne na nowej VM w jednym prostym skryptem - testowano na Ubuntu 20.04LTS";
