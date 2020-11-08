@@ -1,6 +1,10 @@
 # 
  Automatyczny skrypt przygotowujący VM pod BugBounty
  
+ Wymagania: 
+  - użytkownik z uprawnieniami sudo 
+  - [Na ubuntu] adduser nazwa; usermod -aG sudo nazwa;
+ 
  Instalacja
   
   git clone https://github.com/Gauszton/sh
