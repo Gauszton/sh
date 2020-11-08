@@ -3,7 +3,10 @@
  
  Instalacja
   
-  curl -L https://raw.githubusercontent.com/Gauszton/sh/main/skrypt.sh | bash
- 
+  git clone https://github.com/Gauszton/sh
+  cd sh/
+  chmod +x skrypt.sh
+  ./skrypt.sh
+  
  Testowane 
   - Ubuntu 20.04 LTS 
