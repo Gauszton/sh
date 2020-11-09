@@ -1,5 +1,5 @@
 #!/bin/bash
-#Gauszton_skrypt_v_1_1
+#Gauszton_skrypt_v_1_2
 echo "##########################################################################################################################";
 echo "#";
 echo "#   Power Gauszton skrypt, wszyskiego co potrzebne na nowej VM w jednym prostym skryptem - testowano na Ubuntu 20.04LTS";
@@ -144,6 +144,15 @@ else
     echo -e -n "\e[91mBrak masscan\e[0m"
    	echo -n -e " - \e[34mInstalacja masscan\e[0m"
 	sudo apt-get install masscan -y -qq > /dev/null;
+	echo -e " - \e[32mGotowe\e[0m";
+fi
+
+if command -v whois &> /dev/null; then
+    	echo -e "\e[32mwhois juz zainstalowany\e[0m"
+else   
+    echo -e -n "\e[91mBrak whois\e[0m"
+   	echo -n -e " - \e[34mInstalacja whois\e[0m"
+	sudo apt-get install whois -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
