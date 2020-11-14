@@ -9,7 +9,7 @@ echo "";
 echo "Tworzenie pliku logowania: "; 
 sudo touch /var/log/skryptgauszton.log
 sudo chmod 666 /var/log/skryptgauszton.log
-echo 'test' > /var/log/skryptgauszton.log
+echo 'test' >> /var/log/skryptgauszton.log
 # update i upgrade z wymuszeniem -y 
 echo "Update i Upgrade ";
 sudo apt update > /dev/null 2>&1; 
@@ -257,7 +257,7 @@ fi
         fi
 
 #Instalacja pip3 webscreenschot 
-        echo -e -n "\e[32mpip3 install  webscreenshot\e[0m"
+        echo -e -n "\e[34mpip3 install  webscreenshot\e[0m"
         pip3 install webscreenshot > /dev/null 2>&1; 
         echo -e " - \e[32mGotowe\e[0m";
 
