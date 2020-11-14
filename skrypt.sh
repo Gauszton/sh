@@ -7,10 +7,10 @@ echo "#";
 echo "##########################################################################################################################";
 echo "";
 # update i upgrade z wymuszeniem -y 
-echo -n "Update i Upgrade ";
-sudo apt-get update > /dev/null; 
-sudo apt-get upgrade -y > /dev/null;
-echo -e ' - \e[32mGotowe\e[0m';
+echo "Update i Upgrade ";
+sudo apt update > /dev/null; 
+sudo apt upgrade -y > /dev/null;
+echo -e '\e[32mGotowe\e[0m';
 
 #dodanie katalogu tools
 
@@ -32,7 +32,7 @@ if command -v curl &> /dev/null; then
 else
     echo -e -n "\e[91mBrak curl\e[0m"
     echo -n -e " - \e[34mInstalacja curl\e[0m"
-	sudo apt-get install curl -y -qq > /dev/null;
+	sudo apt install curl -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -41,7 +41,7 @@ if command -v wget &> /dev/null; then
 else
     echo -e -n "\e[91mBrak wget\e[0m"
     echo -n -e " - \e[34mInstalacja wget\e[0m"
-	sudo apt-get install wget -y -qq > /dev/null;
+	sudo apt install wget -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -50,7 +50,7 @@ if command -v git &> /dev/null; then
 else
     echo -e -n "\e[91mBrak Git\e[0m"
     echo -n -e " - \e[34mInstalacja git\e[0m"
-	sudo apt-get install git -y -qq > /dev/null;
+	sudo apt install git -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -59,7 +59,7 @@ if command -v python3 &> /dev/null; then
 else
     echo -e -n "\e[91mBrak python3\e[0m"
     echo -n -e " - \e[34mInstalacja python3\e[0m"
-	sudo apt-get install python3 -y -qq > /dev/null;
+	sudo apt install python3 -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -77,7 +77,7 @@ if command go version &> /dev/null; then
 else
     echo -e -n "\e[91mBrak golang\e[0m"
     echo -n -e " - \e[34mInstalacja golang\e[0m"
-	sudo apt-get install golang -y -qq > /dev/null;
+	sudo apt install golang -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -86,7 +86,7 @@ if command -v autojump &> /dev/null; then
 else
     echo -e -n "\e[91mBrak autojump\e[0m"
     echo -n -e " - \e[34mInstalacja autojump\e[0m"
-	sudo apt-get install autojump -y -qq > /dev/null;
+	sudo apt install autojump -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -95,7 +95,7 @@ if command -v zsh &> /dev/null; then
 else
     echo -e -n "\e[91mBrak zsh\e[0m"
     echo -n -e " - \e[34mInstalacja zsh\e[0m"
-	sudo apt-get install zsh -y -qq > /dev/null;
+	sudo apt install zsh -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -104,7 +104,7 @@ if command pip2 -v  &> /dev/null; then
 else
     echo -e -n "\e[91mBrak python2\e[0m"
     echo -n -e " - \e[34mInstalacja python2\e[0m"
-	sudo apt-get install python2 -y -qq > /dev/null;
+	sudo apt install python2 -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -125,7 +125,7 @@ if command -v sqlmap &> /dev/null; then
 else
     echo -e -n "\e[91mBrak sqlmap\e[0m"
     echo -n -e " - \e[34mInstalacja sqlmap\e[0m"
-	sudo apt-get install sqlmap -y -qq > /dev/null;
+	sudo apt install sqlmap -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -134,7 +134,7 @@ if command -v nmap &> /dev/null; then
 else
     echo -e -n "\e[91mBrak nmap\e[0m"
    	echo -n -e " - \e[34mInstalacja nmap\e[0m"
-	sudo apt-get install nmap -y -qq > /dev/null;
+	sudo apt install nmap -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -143,7 +143,7 @@ if command -v masscan &> /dev/null; then
 else   
     echo -e -n "\e[91mBrak masscan\e[0m"
    	echo -n -e " - \e[34mInstalacja masscan\e[0m"
-	sudo apt-get install masscan -y -qq > /dev/null;
+	sudo apt install masscan -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -152,7 +152,7 @@ if command -v whois &> /dev/null; then
 else   
     echo -e -n "\e[91mBrak whois\e[0m"
    	echo -n -e " - \e[34mInstalacja whois\e[0m"
-	sudo apt-get install whois -y -qq > /dev/null;
+	sudo apt install whois -y -qq > /dev/null;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -220,16 +220,12 @@ else
     echo -e " - \e[32mGotowe\e[0m";
 fi
 
-#ustawienie ZSH jako natywny shell dla mojego usera
-#echo "ustawienie ZSH natywnym shell"
-#chsh -s $(which zsh);
-
 #Dodanie mojego pliku zshrc
 if [[ $(curl -sb -H "Accept: application/txt" "https://raw.githubusercontent.com/Gauszton/zsh/main/.zshrc" | head -n 1) == $(cat ~/.zshrc | head -n 1) ]];then
 	echo -e "\e[32mPlik .zshrc w aktualnej wersji zgodnej z Github.com/Gauszton/zsh\e[0m"
 else
     echo -e -n "\e[91mBrak pliku .zshrc z Github.com/Gauszton/zsh\e[0m"
-	echo -n -e "\e[34mDodanie mojego pliku .zshrc z Github.com/Gauszton/zsh\e[0m"
+	echo -n -e " - \e[34mDodanie mojego pliku .zshrc z Github.com/Gauszton/zsh\e[0m"
     cd ~; mv .zshrc old.zshrc; git clone https://github.com/Gauszton/zsh > /dev/null 2>&1; mv zsh/.zshrc ~/.zshrc; rm -rf zsh; rm ~/old.zshrc;
     echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -276,12 +272,11 @@ if [[ $(sudo cat /etc/sudoers | grep "m ALL=(ALL) NOPASSWD: ALL" | tail -n 1) ==
 	echo -e "\e[32mUser m jest juz dodany do autoryzacji suders bez hasla\e[0m"
 else
     echo -e -n "\e[91mBrak usera m w grupie suders bez hasla\e[0m"
-	echo -e -n " - Dodanie usera m do suders bez hasla"
+	echo -e -n " - \e[34mDodanie usera m do suders bez hasla\e[0m"
     sudo sh -c "(sudo echo '# Dodanie usera M do autoryzacji sudo bez hasla' >> /etc/sudoers)"
     sudo sh -c "(sudo echo -n 'm ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers)"
     echo -e " - \e[32mGotowe\e[0m";
 fi
-#echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
 #instalacja HydraRecon
 if [[ -d ~/tools/HydraRecon ]];then
@@ -292,23 +287,7 @@ else
 	cd ~/tools; 
 	sh -c "(git clone https://github.com/aufzayed/HydraRecon.git ~/tools/HydraRecon)" > /dev/null 2>&1;
 	echo -e -n " - \e[34mGit clone\e[0m";
-	sh -c "(pip3 install -r requirements.txt)" > /dev/null 2>&1;
-	echo -e -n " - \e[34mInstalacja requirements\e[0m";
-	echo -e " - \e[32mGotowe\e[0m";
-fi
-
-#Instalacja Knock.py
-if [[ -d ~/tools/knock ]];then
-        echo -e "\e[32mKnock.py juz zainstalowane\e[0m"
-else
-    echo -e -n "\e[91mBrak knock.py\e[0m"
-    echo -e -n " - \e[34mInstalacja knock.py\e[0m"
-	cd ~/tools; 
-	sh -c "(git clone https://github.com/guelfoweb/knock.git ~/tools/knock)" > /dev/null 2>&1;
-	echo -e -n " - \e[34mGit clone\e[0m";
-	
-	sh -c "(sudo apt-get install python-dnspython -y)" > /dev/null 2>&1;
-	sh -c "(sudo python2 ~/tools/knock/setup.py install)" > /dev/null 2>&1;
+	sh -c "(pip3 install -r ~/tools/HydraRecon/requirements.txt)" > /dev/null 2>&1;
 	echo -e -n " - \e[34mInstalacja requirements\e[0m";
 	echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -327,6 +306,37 @@ else
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
+#Instalacja Knock.py
+if [[ -d ~/tools/knock ]];then
+        echo -e "\e[32mKnock.py juz zainstalowane\e[0m"
+else
+    echo -e -n "\e[91mBrak knock.py\e[0m"
+    echo -e -n " - \e[34mInstalacja knock.py\e[0m"
+	sh -c "(git clone https://github.com/guelfoweb/knock.git ~/tools/knock)" > /dev/null 2>&1;
+	echo -e -n " - \e[34mGit clone\e[0m";
+	
+	sh -c "(sudo apt install python3-dnspython -y)" > /dev/null 2>&1;
+    sh -c "(sudo apt install python2-dnspython -y)" > /dev/null 2>&1;
+    
+    sh -c "(sudo pip3 install -r ~/tools/knock/requirements.txt)" > /dev/null 2>&1;
+	sh -c "(sudo python2 ~/tools/knock/setup.py install)" > /dev/null 2>&1;
+	echo -e -n " - \e[34mInstalacja requirements\e[0m";
+	echo -e " - \e[32mGotowe\e[0m";
+fi
+
+#ustawienie ZSH jako natywny shell dla mojego usera
+echo -e -n " - \e[34mUstawienie ZSH natywnym shell\e[0m"
+chsh -s $(which zsh);
+echo -e " - \e[32mGotowe\e[0m";
+
 echo -e "\e[41mReboot\e[0m";
 echo "";
-#sudo reboot
+sudo reboot
+
+#TODO:
+#https://github.com/projectdiscovery/httpx
+#https://github.com/sherlock-project/sherlock
+#https://github.com/WebBreacher/WhatsMyName
+#Przeglad i dodanie narzedzi z : https://github.com/AlexisAhmed/BugBountyToolkit
+#Przeglad i dodanie narzedzi z : https://github.com/nahamsec/bbht
+dirsearch
