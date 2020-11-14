@@ -28,9 +28,9 @@ Testowane:
 
 ToDo:
 =======
- ~~- Kolejne narzędzia ( wypełnienie mojej listy )~~
- ~~- optymalizacja skryptu ~~
- ~~- logowanie do logu w /var/log~~
+ - ~~Kolejne narzędzia ( wypełnienie mojej listy )~~
+ - ~~optymalizacja skryptu~~
+ - ~~logowanie do logu w /var/log~~
  - możliwość aktualizacji narzędzi z git repo za pomoca jednego skryptu 
  - wybranie poprzez argument skryptu czy będzie to wersja serwer ( tylko narzędzia CLI ) czy GUI dodatkowe narzędzia GUI, 
  - wykonywanie skryptu poprzez SSH, 
