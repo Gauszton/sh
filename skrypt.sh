@@ -288,26 +288,48 @@ fi
 #dodanie m do sudersow
 #!/bin/bash
 if [[ $(sudo cat /etc/sudoers | grep "m ALL=(ALL) NOPASSWD: ALL" | tail -n 1) == "m ALL=(ALL) NOPASSWD: ALL" ]];then
-	echo -e "\e[32mUser m jest juz dodany do autoryzacji suders bez hasla\e[0m"
+	    echo -e "\e[32mUser m jest juz dodany do autoryzacji suders bez hasla\e[0m"
 else
-    echo -e -n "\e[91mBrak usera m w grupie suders bez hasla\e[0m"
-	echo -e -n " - \e[34mDodanie usera m do suders bez hasla\e[0m"
-    sudo sh -c "(sudo echo '# Dodanie usera M do autoryzacji sudo bez hasla' >> /etc/sudoers)"
-    sudo sh -c "(sudo echo -n 'm ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers)"
-    echo -e " - \e[32mGotowe\e[0m";
+        echo -e -n "\e[91mBrak usera m w grupie suders bez hasla\e[0m"
+	    echo -e -n " - \e[34mDodanie usera m do suders bez hasla\e[0m"
+
+            sudo sh -c "(sudo echo '# Dodanie usera M do autoryzacji sudo bez hasla' >> /etc/sudoers)"
+            sudo sh -c "(sudo echo -n 'm ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers)"
+
+        echo -e " - \e[32mGotowe\e[0m";
+fi
+
+#instalacja Chromedriver ( wymagany przez HydraRecon)
+if [[ -f /usr/bin/chromedriver ]];then
+        echo -e "\e[32mchromedriver zainstalowany\e[0m"
+else
+        echo -e -n "\e[91mBrak chromedriver\e[0m"
+        echo -n -e " - \e[34mInstalacja chromedriver\e[0m"
+
+                wget "https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip" -P ~/tools/other > /dev/null 2>&1;
+                unzip ~/tools/other/chromedriver_linux64.zip -d ~/tools/other/ > /dev/null 2>&1;
+                sudo mv ~/tools/other/chromedriver /usr/bin/chromedriver
+                sudo chown root:root /usr/bin/chromedriver
+                sudo chmod +x /usr/bin/chromedriver
+
+        echo -e " - \e[32mGotowe\e[0m";
 fi
 
 #instalacja HydraRecon
 if [[ -d ~/tools/HydraRecon ]];then
-    echo -e "\e[32mHydraRecon juz zainstalowane\e[0m"
+        echo -e "\e[32mHydraRecon juz zainstalowane\e[0m"
 else
-    echo -e -n "\e[91mBrak HydraRecon\e[0m"
-    echo -e -n " - \e[34mInstalacja HydraRecon\e[0m"
-	sh -c "(git clone https://github.com/aufzayed/HydraRecon.git ~/tools/HydraRecon)" > /dev/null 2>&1;
-	echo -e -n " - \e[34mGit clone\e[0m";
-	sh -c "(pip3 install -r ~/tools/HydraRecon/requirements.txt)" > /dev/null 2>&1;
-	echo -e -n " - \e[34mInstalacja requirements\e[0m";
-	echo -e " - \e[32mGotowe\e[0m";
+        echo -e -n "\e[91mBrak HydraRecon\e[0m"
+        echo -e -n " - \e[34mInstalacja HydraRecon\e[0m"
+	
+            sh -c "(git clone https://github.com/aufzayed/HydraRecon.git ~/tools/HydraRecon)" > /dev/null 2>&1;
+	
+        echo -e -n " - \e[34mGit clone\e[0m";
+	        
+            sh -c "(pip3 install -r ~/tools/HydraRecon/requirements.txt)" > /dev/null 2>&1;
+	
+        echo -e -n " - \e[34mInstalacja requirements\e[0m";
+	    echo -e " - \e[32mGotowe\e[0m";
 fi
 
 #Instalacja sublister
