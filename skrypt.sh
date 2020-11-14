@@ -459,10 +459,10 @@ read -p "Czy dodać SecLists? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo "";
-    echo -e " - \e[34mPobieranie SecList\e[0m";
+    echo -e "\e[34mPobieranie SecList\e[0m";
         git clone https://github.com/danielmiessler/SecLists.git ~/tools/SecLists >> /var/log/skryptgauszton.log 2>&1;
     echo "";
-    echo -e " - \e[32mGotowe\e[0m";
+    echo -e "\e[32mGotowe\e[0m";
 fi
 echo "";
 #ustawienie ZSH jako natywny shell dla mojego usera
@@ -473,7 +473,7 @@ then
     echo -e "\e[34mUstawienie ZSH natywnym shell\e[0m"
         chsh -s $(which zsh);
     echo "";
-    echo -e " - \e[32mGotowe\e[0m";
+    echo -e "\e[32mGotowe\e[0m";
 fi
 echo "";
 # Reboot
@@ -485,6 +485,7 @@ then
     sudo apt-get clean
     echo "";
     echo -e "\e[41mReboot\e[0m";
+    sudo reboot;
 else
     echo "";
     echo -e "\e[34mCzyszczenie\e[0m"
