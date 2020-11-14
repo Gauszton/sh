@@ -133,9 +133,8 @@ if command python2 -m pip --version &> /dev/null 2>&1; then
 else
     echo -e -n "\e[91mBrak python2-pip\e[0m"
     echo -n -e " - \e[34mInstalacja python2-pip\e[0m"
-	cd ~/tools;
-	curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py > /dev/null 2>&1; 
-	sudo python2 get-pip.py > /dev/null 2>&1; 
+	curl https://bootstrap.pypa.io/get-pip.py --output ~/tools/other/get-pip.py > /dev/null 2>&1; 
+	sudo python2 ~/tools/other/get-pip.py > /dev/null 2>&1; 
 	echo -e " - \e[32mGotowe\e[0m";
 	
 fi
