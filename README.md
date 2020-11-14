@@ -1,4 +1,4 @@
-Power Gauszton skrypcik v.1.3
+Power Gauszton skrypcik v.1.4
 ==========================
 
  Automatyczny skrypt do instalacji narzędzi i przygotowywania środowiska maszyn wirualnych pod BugBounty i CTF.
@@ -37,6 +37,7 @@ Lista narzędzi z GITHUB:
   - sherlock ( https://github.com/sherlock-project/sherlock.git )
   - WhatsMyName ( https://github.com/WebBreacher/WhatsMyName )
   - dirsearch ( https://github.com/maurosoria/dirsearch.git )
+  ...
 
 ToDo:
 =======
