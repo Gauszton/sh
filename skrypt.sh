@@ -6,11 +6,16 @@ echo "#   Power Gauszton skrypcik v 1.4"
 echo "#";
 echo "##########################################################################################################################";
 echo "";
+echo "Tworzenie pliku logowania: "; 
+sudo touch /var/log/skryptgauszton.log
+sudo chmod 666 /var/log/skryptgauszton.log
+echo 'test' > /var/log/skryptgauszton.log
 # update i upgrade z wymuszeniem -y 
 echo "Update i Upgrade ";
 sudo apt update > /dev/null 2>&1; 
 sudo apt upgrade -y > /dev/null 2>&1;
 echo -e '\e[32mGotowe\e[0m';
+
 
 #Tworzenie struktury katalogów
 katalogi="tools tools/other dane"
