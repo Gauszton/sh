@@ -16,7 +16,6 @@ sudo apt update > /dev/null 2>&1;
 sudo apt upgrade -y > /dev/null 2>&1;
 echo -e '\e[32mGotowe\e[0m';
 
-
 #Tworzenie struktury katalogów
 katalogi="tools tools/other dane"
 
@@ -31,7 +30,6 @@ for katalog in $katalogi; do
 
     		echo -e " - \e[32mGotowe\e[0m";
 	fi
-
 done
 #----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -246,7 +244,7 @@ fi
 #Make massdns
         echo -e -n "\e[91mMake massdns\e[0m"
         cd ~/tools/massdns
-        sudo make 
+        sudo make > /dev/null 2>&1;
         echo -e " - \e[32mGotowe\e[0m";
 
 #Dodanie ln vulscan
