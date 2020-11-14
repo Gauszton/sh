@@ -12,7 +12,7 @@ sudo apt update > /dev/null 2>&1;
 sudo apt upgrade -y > /dev/null 2>&1;
 echo -e '\e[32mGotowe\e[0m';
 
-#dodanie katalogu tools
+#dodanie katalogu tools i other
 
 if [[ -d ~/tools ]];then
         echo -e "\e[32mkatalog ~/tools istnieje\e[0m"
@@ -21,6 +21,17 @@ else
         echo -e -n " - \e[34mTworze katalog ~/tools\e[0m"
 
                 mkdir ~/tools
+
+        echo -e " - \e[32mGotowe\e[0m";
+fi
+
+if [[ -d ~/tools/other ]];then
+        echo -e "\e[32mkatalog ~/tools/other istnieje\e[0m"
+else
+        echo -e -n "\e[91mBrak katalogu ~/tools/other\e[0m"
+        echo -e -n " - \e[34mTworze katalog ~/tools/other\e[0m"
+
+                mkdir ~/tools/other
 
         echo -e " - \e[32mGotowe\e[0m";
 fi
