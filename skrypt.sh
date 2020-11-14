@@ -34,7 +34,7 @@ done
 #----------------------------------------------------------------------------------------------------------------------------------------------
 
 dodatek="libcurl4-openssl-dev libssl-dev  ruby-full ruby-dev libxml2 libxml2-dev build-essential libffi-dev python-dev 
-  libxslt1-dev libgmp-dev zlib1g-dev python-setuptools libldns-dev python3-dnspython python2-dnspython"
+  libxslt1-dev libgmp-dev zlib1g-dev python-setuptools libldns-dev python3-dnspython python2-dnspython xvfb awscli inetutils-ping dnsutils net-tools"
 
 for dodatekA in $dodatek; do
         echo -n -e " - \e[34mSprawdzanie $dodatekA\e[0m"
@@ -44,8 +44,8 @@ for dodatekA in $dodatek; do
         echo -e " - \e[32mGotowe\e[0m";
 done
 
-aplikacje="rename jq xargs unzip curl wget git whois python2 python3 autojump zsh sqlmap nmap masscan recon-ng xvfb phantomjs dirb build-essential 
-gcc vim awscli inetutils-ping make whois perl nikto dnsutils net-tools tmux hydra dnsrecon"
+aplikacje="rename jq xargs unzip curl wget git whois python2 python3 autojump zsh sqlmap nmap masscan recon-ng phantomjs dirb build-essential 
+gcc vim make whois perl nikto tmux hydra dnsrecon"
 for aplikacja in $aplikacje; do
     if command -v $aplikacja &> /dev/null 2>&1; then
     	echo -e "\e[32m$aplikacja juz zainstalowany\e[0m"
@@ -242,15 +242,20 @@ else
 fi
 
 #Make massdns
-        echo -e -n "\e[91mMake massdns\e[0m"
+        echo -e -n "\e[34mMake massdns\e[0m"
         cd ~/tools/massdns
         sudo make > /dev/null 2>&1;
         echo -e " - \e[32mGotowe\e[0m";
 
 #Dodanie ln vulscan
-        echo -e -n "\e[91mln -s dla vulscan\e[0m"
-        sudo ln -s ~tools/vulscan /usr/share/nmap/scripts/vulscan    
-        echo -e " - \e[32mGotowe\e[0m";
+        
+        if [[ -f /usr/share/nmap/scripts/vulscan ]];then
+            echo -e "\e[32mln -s dla vulscan wystepuje\e[0m"
+        else
+            echo -e -n "\e[91mln -s dla vulscan\e[0m"
+            sudo ln -s ~tools/vulscan /usr/share/nmap/scripts/vulscan    
+            echo -e " - \e[32mGotowe\e[0m";
+        fi
 
 #Instalacja pip3 webscreenschot 
         echo -e -n "\e[91mpip3 install  webscreenshot\e[0m"
