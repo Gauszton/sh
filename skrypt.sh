@@ -44,7 +44,7 @@ for dodatekA in $dodatek; do
         echo -e " - \e[32mGotowe\e[0m";
 done
 
-aplikacje="rename jq xargs unzip curl wget git whois python2 python3 autojump zsh sqlmap nmap masscan recon-ng phantomjs dirb build-essential 
+aplikacje="rename jq xargs unzip curl wget git whois python2 python3 autojump zsh sqlmap nmap masscan recon-ng phantomjs dirb 
 gcc vim make whois perl nikto tmux hydra dnsrecon"
 for aplikacja in $aplikacje; do
     if command -v $aplikacja &> /dev/null 2>&1; then
@@ -99,6 +99,7 @@ gitInstall="
                 https://github.com/AlexisAhmed/theHarvester.git 
                 https://github.com/christophetd/CloudFlair.git 
                 https://github.com/AlexisAhmed/bucket_finder.git 
+                github.com/projectdiscovery/subfinder.git
 "
 
 for aplikacja in $gitInstall; do
@@ -131,7 +132,6 @@ goInstall=" github.com/michenriksen/aquatone
             github.com/Emoe/kxss
             github.com/OJ/gobuster
             github.com/ffuf/ffuf
-            github.com/projectdiscovery/subfinder/cmd/subfinder
 "
 
 for aplikacja in $goInstall; do
@@ -461,7 +461,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo -e " - \e[34mPobieranie SecList\e[0m";
         git clone https://github.com/danielmiessler/SecLists.git ~/tools/SecLists > /dev/null 2>&1;
-    echo -e -n" - \e[32mGotowe\e[0m";
+    echo -e " - \e[32mGotowe\e[0m";
 fi
 echo "";
 #ustawienie ZSH jako natywny shell dla mojego usera
@@ -470,7 +470,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo -e "\e[34mUstawienie ZSH natywnym shell\e[0m"
         chsh -s $(which zsh);
-    echo -e -n " - \e[32mGotowe\e[0m";
+    echo -e " - \e[32mGotowe\e[0m";
 fi
 echo "";
 # Reboot
@@ -479,10 +479,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo -e "\e[34mCzyszczenie\e[0m"
     sudo apt-get clean
-    echo -e -n "\e[41mReboot\e[0m";
+    echo -e "\e[41mReboot\e[0m";
 else
     echo -e "\e[34mCzyszczenie\e[0m"
     sudo apt-get clean
-    echo -e -n "\e[32mGotowe\e[0m";
+    echo -e "\e[32mGotowe\e[0m";
 fi
 echo "";
