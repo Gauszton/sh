@@ -459,8 +459,10 @@ echo "";
 read -p "Czy dodać SecLists? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    echo "";
     echo -e " - \e[34mPobieranie SecList\e[0m";
         git clone https://github.com/danielmiessler/SecLists.git ~/tools/SecLists > /dev/null 2>&1;
+    echo "";
     echo -e " - \e[32mGotowe\e[0m";
 fi
 echo "";
@@ -468,8 +470,10 @@ echo "";
 read -p "Ustawic ZSH natywnym shell? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    echo "";
     echo -e "\e[34mUstawienie ZSH natywnym shell\e[0m"
         chsh -s $(which zsh);
+    echo "";
     echo -e " - \e[32mGotowe\e[0m";
 fi
 echo "";
@@ -477,12 +481,17 @@ echo "";
 read -p "Wykonanie restartu po wyczyszczeniu? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+    echo "";
     echo -e "\e[34mCzyszczenie\e[0m"
     sudo apt-get clean
+    echo "";
     echo -e "\e[41mReboot\e[0m";
 else
+    echo "";
     echo -e "\e[34mCzyszczenie\e[0m"
     sudo apt-get clean
+    echo "";
     echo -e "\e[32mGotowe\e[0m";
+    
 fi
 echo "";
