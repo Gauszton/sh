@@ -9,11 +9,11 @@ echo "";
 echo "Tworzenie pliku logowania: "; 
 sudo touch /var/log/skryptgauszton.log
 sudo chmod 666 /var/log/skryptgauszton.log
-echo 'test' >> /var/log/skryptgauszton.log
+echo 'Rozpoczecie instalacji' >> /var/log/skryptgauszton.log
 # update i upgrade z wymuszeniem -y 
 echo "Update i Upgrade ";
-sudo apt update > /dev/null 2>&1; 
-sudo apt upgrade -y > /dev/null 2>&1;
+sudo apt update >> /var/log/skryptgauszton.log 2>&1; 
+sudo apt upgrade -y >> /var/log/skryptgauszton.log 2>&1;
 echo -e '\e[32mGotowe\e[0m';
 
 #Tworzenie struktury katalogów
@@ -39,7 +39,7 @@ dodatek="libcurl4-openssl-dev libssl-dev  ruby-full ruby-dev libxml2 libxml2-dev
 for dodatekA in $dodatek; do
         echo -n -e " - \e[34mSprawdzanie $dodatekA\e[0m"
         
-            sudo apt install $dodatekA -y -qq > /dev/null 2>&1;
+            sudo apt install $dodatekA -y -qq >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
 done
@@ -47,13 +47,13 @@ done
 aplikacje="rename jq xargs unzip curl wget git whois python2 python3 autojump zsh sqlmap nmap masscan recon-ng phantomjs dirb 
 gcc vim make whois perl nikto tmux hydra dnsrecon"
 for aplikacja in $aplikacje; do
-    if command -v $aplikacja &> /dev/null 2>&1; then
+    if command -v $aplikacja &>> /var/log/skryptgauszton.log 2>&1; then
     	echo -e "\e[32m$aplikacja juz zainstalowany\e[0m"
     else
         echo -e -n "\e[91mBrak $aplikacja\e[0m"
         echo -n -e " - \e[34mInstalacja $aplikacja\e[0m"
         
-            sudo apt install $aplikacja -y -qq > /dev/null 2>&1;
+            sudo apt install $aplikacja -y -qq >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
     fi
@@ -61,13 +61,13 @@ done
 
 snapAplikacje="chromium amass"
 for aplikacja in $snapAplikacje; do
-    if command -v $aplikacja &> /dev/null 2>&1; then
+    if command -v $aplikacja &>> /var/log/skryptgauszton.log 2>&1; then
     	echo -e "\e[32m$aplikacja juz zainstalowany\e[0m"
     else
         echo -e -n "\e[91mBrak $aplikacja\e[0m"
         echo -n -e " - \e[34mInstalacja $aplikacja\e[0m"
         
-            sudo snap install $aplikacja > /dev/null 2>&1;
+            sudo snap install $aplikacja >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
     fi
@@ -109,12 +109,12 @@ for aplikacja in $gitInstall; do
         echo -e -n "\e[91mBrak $(basename $aplikacja .git)\e[0m"
         echo -n -e " - \e[34mGit clone $(basename $aplikacja .git)\e[0m"
         
-        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) > /dev/null 2>&1;
+        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) >> /var/log/skryptgauszton.log 2>&1;
         	
         	if [[ -f ~/tools/$(basename $aplikacja .git)/requirements.txt ]];then
     			echo -n -e " - \e[34mInstalacja wymaganych plikow \e[0m"
     			
-    			sh -c "(sudo python3 -m pip install -r ~/tools/$(basename $aplikacja .git)/requirements.txt)" > /dev/null 2>&1;
+    			sh -c "(sudo python3 -m pip install -r ~/tools/$(basename $aplikacja .git)/requirements.txt)" >> /var/log/skryptgauszton.log 2>&1;
     			
     			echo -e " - \e[32mGotowe\e[0m";
     		else
@@ -141,7 +141,7 @@ for aplikacja in $goInstall; do
         echo -e -n "\e[91mBrak $(basename $aplikacja .git)\e[0m"
         echo -n -e " - \e[34mGo install $(basename $aplikacja .git)\e[0m"
 	
-        sh -c "(go get -u $aplikacja)" > /dev/null 2>&1;
+        sh -c "(go get -u $aplikacja)" >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
     fi
@@ -160,15 +160,15 @@ for aplikacja in $gitInstallSetup; do
         echo -e -n "\e[91mBrak $(basename $aplikacja .git)\e[0m"
         echo -n -e " - \e[34mGit clone $(basename $aplikacja .git)\e[0m"
         
-        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) > /dev/null 2>&1;
+        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) >> /var/log/skryptgauszton.log 2>&1;
         	
         	if [[ -f ~/tools/$(basename $aplikacja .git)/requirements.txt ]];then
     			echo -n -e " - \e[34mInstalacja wymaganych plikow \e[0m"
     			
-    			sh -c "(sudo python3 -m pip install -r ~/tools/$(basename $aplikacja .git)/requirements.txt)" > /dev/null 2>&1;
+    			sh -c "(sudo python3 -m pip install -r ~/tools/$(basename $aplikacja .git)/requirements.txt)" >> /var/log/skryptgauszton.log 2>&1;
     			
     			echo -n -e " - \e[34mInstalacja setup.py \e[0m"
-    			sh -c "(sudo python ~/tools/$(basename $aplikacja .git)/setup.py install)" > /dev/null 2>&1;
+    			sh -c "(sudo python ~/tools/$(basename $aplikacja .git)/setup.py install)" >> /var/log/skryptgauszton.log 2>&1;
     			
     			
     			echo -e " - \e[32mGotowe\e[0m";
@@ -191,12 +191,12 @@ for aplikacja in $gemInstall; do
         echo -e -n "\e[91mBrak $(basename $aplikacja .git)\e[0m"
         echo -n -e " - \e[34mGit clone $(basename $aplikacja .git)\e[0m"
         
-        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) > /dev/null 2>&1;
+        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) >> /var/log/skryptgauszton.log 2>&1;
 	
     		echo -n -e " - \e[34mInstalacja\e[0m"
     		cd ~/tools/$(basename $aplikacja .git)
-    		sudo gem install bundler > /dev/null 2>&1;
-            sudo bundle install --without test > /dev/null 2>&1;
+    		sudo gem install bundler >> /var/log/skryptgauszton.log 2>&1;
+            sudo bundle install --without test >> /var/log/skryptgauszton.log 2>&1;
     			
     		echo -e " - \e[32mGotowe\e[0m";
     		
@@ -206,36 +206,36 @@ done
 #----------------------------------------------------------------------------------------------------------------------------------------------
 #instalacja pakietw niestandardowych >3 takie przechodzi na pętle
 
-if command python2 -m pip --version &> /dev/null 2>&1; then
+if command python2 -m pip --version &>> /var/log/skryptgauszton.log 2>&1; then
         echo -e "\e[32mpython2-pip juz zainstalowany\e[0m"
 else
         echo -e -n "\e[91mBrak python2-pip\e[0m"
         echo -n -e " - \e[34mInstalacja python2-pip\e[0m"
         
-            curl https://bootstrap.pypa.io/get-pip.py --output ~/tools/other/get-pip.py > /dev/null 2>&1; 
-            sudo python2 ~/tools/other/get-pip.py > /dev/null 2>&1; 
+            curl https://bootstrap.pypa.io/get-pip.py --output ~/tools/other/get-pip.py >> /var/log/skryptgauszton.log 2>&1; 
+            sudo python2 ~/tools/other/get-pip.py >> /var/log/skryptgauszton.log 2>&1; 
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command python3 -m pip --version &> /dev/null 2>&1; then
+if command python3 -m pip --version &>> /var/log/skryptgauszton.log 2>&1; then
         echo -e "\e[32mpython3-pip juz zainstalowany\e[0m"
 else
         echo -e -n "\e[91mBrak python3-pip\e[0m"
         echo -n -e " - \e[34mInstalacja python-pip\e[0m"
         
-        sudo apt install python3-pip -y > /dev/null 2>&1; 
+        sudo apt install python3-pip -y >> /var/log/skryptgauszton.log 2>&1; 
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command go version  &> /dev/null 2>&1; then
+if command go version  &>> /var/log/skryptgauszton.log 2>&1; then
         echo -e "\e[32mgolang juz zainstalowany\e[0m"
 else
         echo -e -n "\e[91mBrak golang\e[0m"
         echo -n -e " - \e[34mInstalacja golang\e[0m"
         
-        sudo apt install golang -y > /dev/null 2>&1; 
+        sudo apt install golang -y >> /var/log/skryptgauszton.log 2>&1; 
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -243,7 +243,7 @@ fi
 #Make massdns
         echo -e -n "\e[34mMake massdns\e[0m"
         cd ~/tools/massdns
-        sudo make > /dev/null 2>&1;
+        sudo make >> /var/log/skryptgauszton.log 2>&1;
         echo -e " - \e[32mGotowe\e[0m";
 
 #Dodanie ln vulscan
@@ -258,7 +258,7 @@ fi
 
 #Instalacja pip3 webscreenschot 
         echo -e -n "\e[34mpip3 install  webscreenshot\e[0m"
-        pip3 install webscreenshot > /dev/null 2>&1; 
+        pip3 install webscreenshot >> /var/log/skryptgauszton.log 2>&1; 
         echo -e " - \e[32mGotowe\e[0m";
 
 #----------------------------------------------------------------------------------------------------------------------------------------------
@@ -269,7 +269,7 @@ else
         echo -e -n "\e[91mBrak OhMyZSH\e[0m"
         echo -n -e " - \e[34mInstalacja OhMyZSH\e[0m"
     
-            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended > /dev/null 2>&1; 
+            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended >> /var/log/skryptgauszton.log 2>&1; 
     
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -280,7 +280,7 @@ else
         echo -e -n "\e[91mBrak zsh-autosuggestions\e[0m"
         echo -n -e " - \e[34mInstalacja zsh-autosuggestions\e[0m"
         
-            sh -c "(git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions)" > /dev/null 2>&1;
+            sh -c "(git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions)" >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -291,7 +291,7 @@ else
         echo -e -n "\e[91mBrak zsh-syntax-highlighting\e[0m"
         echo -n -e " - \e[34mInstalacja zsh-syntax-highlighting\e[0m"
         
-            sh -c "(git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting)" > /dev/null 2>&1;
+            sh -c "(git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting)" >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -302,7 +302,7 @@ else
         echo -e -n "\e[91mBrak zsh-completions\e[0m"
         echo -n -e " - \e[34mInstalacja zsh-completions\e[0m"
         
-            sh -c "(git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions)" > /dev/null 2>&1;
+            sh -c "(git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions)" >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -313,7 +313,7 @@ else
         echo -e -n "\e[91mBrak zsh-docker\e[0m"
         echo -n -e " - \e[34mInstalacja zsh-docker\e[0m"
         
-            sh -c "(git clone https://github.com/zsh-users/zsh-docker.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-docker)" > /dev/null 2>&1;
+            sh -c "(git clone https://github.com/zsh-users/zsh-docker.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-docker)" >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -324,7 +324,7 @@ else
         echo -e -n "\e[91mBrak auto-color-ls\e[0m"
         echo -n -e " - \e[34mInstalacja auto-color-ls\e[0m"
    
-            sh -c "(git clone https://github.com/gretzky/auto-color-ls.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/auto-color-ls)" > /dev/null 2>&1;
+            sh -c "(git clone https://github.com/gretzky/auto-color-ls.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/auto-color-ls)" >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -335,7 +335,7 @@ else
         echo -e -n "\e[91mBrak Common zsh theme\e[0m"
         echo -n -e " - \e[34mCommon zsh theme zainstalowany\e[0m"
             
-            sh -c "(wget -O $ZSH_CUSTOM/themes/common.zsh-theme https://raw.githubusercontent.com/jackharrisonsherlock/common/master/common.zsh-theme)" > /dev/null 2>&1;
+            sh -c "(wget -O $ZSH_CUSTOM/themes/common.zsh-theme https://raw.githubusercontent.com/jackharrisonsherlock/common/master/common.zsh-theme)" >> /var/log/skryptgauszton.log 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -347,7 +347,7 @@ else
         echo -e -n "\e[91mBrak pliku .zshrc z Github.com/Gauszton/zsh\e[0m"
 	    echo -n -e " - \e[34mDodanie mojego pliku .zshrc z Github.com/Gauszton/zsh\e[0m"
             
-            cd ~; mv .zshrc old.zshrc; git clone https://github.com/Gauszton/zsh > /dev/null 2>&1; mv zsh/.zshrc ~/.zshrc; rm -rf zsh; rm ~/old.zshrc;
+            cd ~; mv .zshrc old.zshrc; git clone https://github.com/Gauszton/zsh >> /var/log/skryptgauszton.log 2>&1; mv zsh/.zshrc ~/.zshrc; rm -rf zsh; rm ~/old.zshrc;
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -408,8 +408,8 @@ else
         echo -e -n "\e[91mBrak chromedriver\e[0m"
         echo -n -e " - \e[34mInstalacja chromedriver\e[0m"
 
-            wget "https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip" -P ~/tools/other > /dev/null 2>&1;
-            unzip ~/tools/other/chromedriver_linux64.zip -d ~/tools/other/ > /dev/null 2>&1;
+            wget "https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip" -P ~/tools/other >> /var/log/skryptgauszton.log 2>&1;
+            unzip ~/tools/other/chromedriver_linux64.zip -d ~/tools/other/ >> /var/log/skryptgauszton.log 2>&1;
             sudo mv ~/tools/other/chromedriver /usr/bin/chromedriver
             sudo chown root:root /usr/bin/chromedriver
             sudo chmod +x /usr/bin/chromedriver
@@ -418,36 +418,36 @@ else
 fi
 
 #Instalacja httpx
-if command -v httpx &> /dev/null 2>&1; then
+if command -v httpx &>> /var/log/skryptgauszton.log 2>&1; then
         echo -e "\e[32mhttpx juz zainstalowane\e[0m"
 else
         echo -e -n "\e[91mBrak httpx\e[0m"
         echo -e -n " - \e[34mInstalacja httpx\e[0m"
         echo -e -n " - \e[34mPobieranie\e[0m";
 
-            sh -c "(wget https://github.com/projectdiscovery/httpx/releases/download/v1.0.2/httpx_1.0.2_linux_amd64.tar.gz -P ~/tools/httpx)" > /dev/null 2>&1;
+            sh -c "(wget https://github.com/projectdiscovery/httpx/releases/download/v1.0.2/httpx_1.0.2_linux_amd64.tar.gz -P ~/tools/httpx)" >> /var/log/skryptgauszton.log 2>&1;
 
         echo -e -n " - \e[34mInstalacja\e[0m";
 
-            tar -xvf ~/tools/httpx/httpx_1.0.2_linux_amd64.tar.gz -C ~/tools/httpx/ > /dev/null 2>&1;
+            tar -xvf ~/tools/httpx/httpx_1.0.2_linux_amd64.tar.gz -C ~/tools/httpx/ >> /var/log/skryptgauszton.log 2>&1;
             sudo mv ~/tools/httpx/httpx /usr/local/bin/httpx
 
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
 #Instalacja gau
-if command -v gau &> /dev/null 2>&1; then
+if command -v gau &>> /var/log/skryptgauszton.log 2>&1; then
         echo -e "\e[32mgau juz zainstalowane\e[0m"
 else
         echo -e -n "\e[91mBrak gau\e[0m"
         echo -e -n " - \e[34mInstalacja gau\e[0m"
         echo -e -n " - \e[34mPobieranie\e[0m";
 
-            sh -c "(wget https://github.com/lc/gau/releases/download/v1.0.7/gau_1.0.7_linux_amd64.tar.gz -P ~/tools/gau)" > /dev/null 2>&1;
+            sh -c "(wget https://github.com/lc/gau/releases/download/v1.0.7/gau_1.0.7_linux_amd64.tar.gz -P ~/tools/gau)" >> /var/log/skryptgauszton.log 2>&1;
 
         echo -e -n " - \e[34mInstalacja\e[0m";
 
-            tar -xvf ~/tools/gau/gau_1.0.7_linux_amd64.tar.gz -C ~/tools/gau/ > /dev/null 2>&1;
+            tar -xvf ~/tools/gau/gau_1.0.7_linux_amd64.tar.gz -C ~/tools/gau/ >> /var/log/skryptgauszton.log 2>&1;
             sudo mv ~/tools/gau/gau /usr/bin/gau
 
         echo -e " - \e[32mGotowe\e[0m";
@@ -460,7 +460,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo "";
     echo -e " - \e[34mPobieranie SecList\e[0m";
-        git clone https://github.com/danielmiessler/SecLists.git ~/tools/SecLists > /dev/null 2>&1;
+        git clone https://github.com/danielmiessler/SecLists.git ~/tools/SecLists >> /var/log/skryptgauszton.log 2>&1;
     echo "";
     echo -e " - \e[32mGotowe\e[0m";
 fi
