@@ -99,9 +99,8 @@ gitInstall="
                 https://github.com/AlexisAhmed/theHarvester.git 
                 https://github.com/christophetd/CloudFlair.git 
                 https://github.com/AlexisAhmed/bucket_finder.git 
-                github.com/projectdiscovery/subfinder.git
 "
-
+#github.com/projectdiscovery/subfinder.git
 for aplikacja in $gitInstall; do
 
     if [[ -d ~/tools/$(basename $aplikacja .git) ]];then
@@ -258,7 +257,7 @@ fi
         fi
 
 #Instalacja pip3 webscreenschot 
-        echo -e -n "\e[91mpip3 install  webscreenshot\e[0m"
+        echo -e -n "\e[32mpip3 install  webscreenshot\e[0m"
         pip3 install webscreenshot > /dev/null 2>&1; 
         echo -e " - \e[32mGotowe\e[0m";
 
