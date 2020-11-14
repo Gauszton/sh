@@ -1,8 +1,8 @@
 #!/bin/bash
-#Gauszton_skrypt_v_1_3
+#Gauszton_skrypt_v_1_4
 echo "##########################################################################################################################";
 echo "#";
-echo "#   Power Gauszton skrypcik
+echo "#   Power Gauszton skrypcik v 1.4"
 echo "#";
 echo "##########################################################################################################################";
 echo "";
@@ -37,18 +37,17 @@ fi
 #----------------------------------------------------------------------------------------------------------------------------------------------
 #W fasie testowania pętla instalacyjna po sprawdzeniu przejdziemy na kilka pętli do instalacji wszyskiego
 dodatek="libcurl4-openssl-dev libssl-dev  ruby-full ruby-dev libxml2 libxml2-dev build-essential libffi-dev python-dev 
-  libxslt1-dev libgmp-dev zlib1g-dev python-setuptools libldns-dev"
+  libxslt1-dev libgmp-dev zlib1g-dev python-setuptools libldns-dev python3-dnspython python2-dnspython"
 
 for dodatekA in $dodatek; do
         echo -n -e " - \e[34mSprawdzanie $dodatekA\e[0m"
         
-            sudo apt install $dodatekA -y -qq 
-            #> /dev/null 2>&1;
+            sudo apt install $dodatekA -y -qq > /dev/null 2>&1;
         
         echo -e " - \e[32mGotowe\e[0m";
 done
 
-aplikacje="rename jq xargs unzip curl wget git whois golang python2 python3 python3-pip autojump zsh sqlmap nmap masscan"
+aplikacje="rename jq xargs unzip curl wget git whois python2 python3 autojump zsh sqlmap nmap masscan recon-ng"
 for aplikacja in $aplikacje; do
     if command -v $aplikacja &> /dev/null 2>&1; then
     	echo -e "\e[32m$aplikacja juz zainstalowany\e[0m"
@@ -61,6 +60,140 @@ for aplikacja in $aplikacje; do
         echo -e " - \e[32mGotowe\e[0m";
     fi
 done
+
+snapAplikacje="chromium amass"
+for aplikacja in $snapAplikacje; do
+    if command -v $aplikacja &> /dev/null 2>&1; then
+    	echo -e "\e[32m$aplikacja juz zainstalowany\e[0m"
+    else
+        echo -e -n "\e[91mBrak $aplikacja\e[0m"
+        echo -n -e " - \e[34mInstalacja $aplikacja\e[0m"
+        
+            sudo snap install $aplikacja > /dev/null 2>&1;
+        
+        echo -e " - \e[32mGotowe\e[0m";
+    fi
+done
+
+gitInstall="
+                https://github.com/yassineaboukir/asnlookup.git 
+                https://github.com/WebBreacher/WhatsMyName.git 
+                https://github.com/nahamsec/crtndstry.git
+                https://github.com/aufzayed/HydraRecon.git
+                https://github.com/aboul3la/Sublist3r.git
+                https://github.com/sherlock-project/sherlock.git
+                https://github.com/maurosoria/dirsearch.git
+                https://github.com/nahamsec/lazys3.git
+                https://github.com/nahamsec/crtndstry.git
+                https://github.com/danielmiessler/SecLists.git
+                https://github.com/nahamsec/lazyrecon.git
+                https://github.com/jobertabma/virtual-host-discovery.git
+                https://github.com/s0md3v/Striker.git
+                https://github.com/s0md3v/Photon.git
+                https://github.com/pwn0sec/PwnXSS
+"
+
+for aplikacja in $gitInstall; do
+
+    if [[ -d ~/tools/$(basename $aplikacja .git) ]];then
+    	echo -e "\e[32m$(basename $aplikacja .git) juz zainstalowany\e[0m"
+    else
+        echo -e -n "\e[91mBrak $(basename $aplikacja .git)\e[0m"
+        echo -n -e " - \e[34mGit clone $(basename $aplikacja .git)\e[0m"
+        
+        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) > /dev/null 2>&1;
+        	
+        	if [[ -f ~/tools/$(basename $aplikacja .git)/requirements.txt ]];then
+    			echo -n -e " - \e[34mInstalacja wymaganych plikow \e[0m"
+    			
+    			sh -c "(sudo python3 -m pip install -r ~/tools/$(basename $aplikacja .git)/requirements.txt)" > /dev/null 2>&1;
+    			
+    			echo -e " - \e[32mGotowe\e[0m";
+    		else
+    			echo -e " - \e[32mGotowe\e[0m";
+    		fi
+        
+    fi
+done
+
+goInstall=" github.com/michenriksen/aquatone 
+            github.com/tomnomnom/httprobe 
+            github.com/tomnomnom/unfurl
+            github.com/tomnomnom/waybackurls
+            github.com/Emoe/kxss
+            github.com/OJ/gobuster
+            github.com/ffuf/ffuf
+"
+
+for aplikacja in $goInstall; do
+
+    if [[ -f ~/go/bin/$(basename $aplikacja .git) ]];then
+    	echo -e "\e[32m$(basename $aplikacja .git) juz zainstalowany\e[0m"
+    else
+        echo -e -n "\e[91mBrak $(basename $aplikacja .git)\e[0m"
+        echo -n -e " - \e[34mGo install $(basename $aplikacja .git)\e[0m"
+	
+        sh -c "(go get -u $aplikacja)" > /dev/null 2>&1;
+        
+        echo -e " - \e[32mGotowe\e[0m";
+    fi
+done
+
+gitInstallSetup="
+                https://github.com/nahamsec/JSParser.git
+                https://github.com/guelfoweb/knock.git
+"
+
+for aplikacja in $gitInstallSetup; do
+
+    if [[ -d ~/tools/$(basename $aplikacja .git) ]];then
+    	echo -e "\e[32m$(basename $aplikacja .git) juz zainstalowany\e[0m"
+    else
+        echo -e -n "\e[91mBrak $(basename $aplikacja .git)\e[0m"
+        echo -n -e " - \e[34mGit clone $(basename $aplikacja .git)\e[0m"
+        
+        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) > /dev/null 2>&1;
+        	
+        	if [[ -f ~/tools/$(basename $aplikacja .git)/requirements.txt ]];then
+    			echo -n -e " - \e[34mInstalacja wymaganych plikow \e[0m"
+    			
+    			sh -c "(sudo python3 -m pip install -r ~/tools/$(basename $aplikacja .git)/requirements.txt)" > /dev/null 2>&1;
+    			
+    			echo -n -e " - \e[34mInstalacja setup.py \e[0m"
+    			sh -c "(sudo python ~/tools/$(basename $aplikacja .git)/setup.py install)" > /dev/null 2>&1;
+    			
+    			
+    			echo -e " - \e[32mGotowe\e[0m";
+    		else
+    			echo -e " - \e[32mGotowe\e[0m";
+    		fi
+        
+    fi
+done
+
+gemInstall="
+                https://github.com/wpscanteam/wpscan.git
+"
+
+for aplikacja in $gemInstall; do
+
+    if [[ -d ~/tools/$(basename $aplikacja .git) ]];then
+    	echo -e "\e[32m$(basename $aplikacja .git) juz zainstalowany\e[0m"
+    else
+        echo -e -n "\e[91mBrak $(basename $aplikacja .git)\e[0m"
+        echo -n -e " - \e[34mGit clone $(basename $aplikacja .git)\e[0m"
+        
+        	git clone $aplikacja ~/tools/$(basename $aplikacja .git) > /dev/null 2>&1;
+	
+    		echo -n -e " - \e[34mInstalacja\e[0m"
+    		cd ~/tools/$(basename $aplikacja .git)
+    		sudo gem install bundler > /dev/null 2>&1 && bundle install --without test > /dev/null 2>&1;
+    			
+    		echo -e " - \e[32mGotowe\e[0m";
+    		
+    fi
+done
+
 
 #----------------------------------------------------------------------------------------------------------------------------------------------
 #instalacja pakietw apt Linux 
@@ -77,15 +210,25 @@ else
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
-
-if command -v amass &> /dev/null 2>&1; then
-        echo -e "\e[32mamass juz zainstalowany\e[0m"
+if command python3 -m pip --version &> /dev/null 2>&1; then
+        echo -e "\e[32mpython3-pip juz zainstalowany\e[0m"
 else
-        echo -e -n "\e[91mBrak amass\e[0m"
-        echo -n -e " - \e[34mInstalacja amass\e[0m"
+        echo -e -n "\e[91mBrak python3-pip\e[0m"
+        echo -n -e " - \e[34mInstalacja python-pip\e[0m"
+        
+        sudo apt install python3-pip -y > /dev/null 2>&1; 
+        
+        echo -e " - \e[32mGotowe\e[0m";
+fi
 
-                sudo snap install amass > /dev/null 2>&1;
-
+if command go version  &> /dev/null 2>&1; then
+        echo -e "\e[32mgolang juz zainstalowany\e[0m"
+else
+        echo -e -n "\e[91mBrak golang\e[0m"
+        echo -n -e " - \e[34mInstalacja golang\e[0m"
+        
+        sudo apt install golang -y > /dev/null 2>&1; 
+        
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
@@ -245,59 +388,7 @@ else
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
-#instalacja HydraRecon
-if [[ -d ~/tools/HydraRecon ]];then
-        echo -e "\e[32mHydraRecon juz zainstalowane\e[0m"
-else
-        echo -e -n "\e[91mBrak HydraRecon\e[0m"
-        echo -e -n " - \e[34mInstalacja HydraRecon\e[0m"
-	
-            sh -c "(git clone https://github.com/aufzayed/HydraRecon.git ~/tools/HydraRecon)" > /dev/null 2>&1;
-	
-        echo -e -n " - \e[34mGit clone\e[0m";
-	        
-            sh -c "(pip3 install -r ~/tools/HydraRecon/requirements.txt)" > /dev/null 2>&1;
-	
-        echo -e -n " - \e[34mInstalacja requirements\e[0m";
-	    echo -e " - \e[32mGotowe\e[0m";
-fi
 
-#Instalacja sublister
-if [[ -d ~/tools/Sublist3r ]];then
-        echo -e "\e[32mSublist3r juz zainstalowane\e[0m"
-else
-        echo -e -n "\e[91mBrak Sublist3r\e[0m"
-        echo -e -n " - \e[34mInstalacja Sublist3r\e[0m"
-	
-            sh -c "(git clone https://github.com/aboul3la/Sublist3r.git ~/tools/Sublist3r)" > /dev/null 2>&1;
-	    
-        echo -e -n " - \e[34mGit clone\e[0m";
-	        
-            sh -c "(sudo pip3 install -r ~/tools/Sublist3r/requirements.txt)" > /dev/null 2>&1;
-	    
-        echo -e -n " - \e[34mInstalacja requirements\e[0m";
-	    echo -e " - \e[32mGotowe\e[0m";
-fi
-
-#Instalacja Knock.py
-if [[ -d ~/tools/knock ]];then
-        echo -e "\e[32mKnock.py juz zainstalowane\e[0m"
-else
-        echo -e -n "\e[91mBrak knock.py\e[0m"
-        echo -e -n " - \e[34mInstalacja knock.py\e[0m"
-	
-            sh -c "(git clone https://github.com/guelfoweb/knock.git ~/tools/knock)" > /dev/null 2>&1;
-	    
-        echo -e -n " - \e[34mGit clone\e[0m";
-	
-	        sh -c "(sudo apt install python3-dnspython -y)" > /dev/null 2>&1;
-            sh -c "(sudo apt install python2-dnspython -y)" > /dev/null 2>&1;
-            sh -c "(sudo pip3 install -r ~/tools/knock/requirements.txt)" > /dev/null 2>&1;
-	        sh -c "(sudo python2 ~/tools/knock/setup.py install)" > /dev/null 2>&1;
-	    
-        echo -e -n " - \e[34mInstalacja requirements\e[0m";
-	    echo -e " - \e[32mGotowe\e[0m";
-fi
 
 #Instalacja httpx
 if command -v httpx &> /dev/null 2>&1; then
@@ -335,62 +426,18 @@ else
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
-#Instalacja sherlock
-if [[ -d ~/tools/sherlock ]];then
-        echo -e "\e[32msherlock juz zainstalowane\e[0m"
-else
-        echo -e -n "\e[91mBrak sherlock\e[0m"
-        echo -e -n " - \e[34mInstalacja sherlock\e[0m"
-	    echo -e -n " - \e[34mGit clone\e[0m";
-            
-            sh -c "(git clone https://github.com/sherlock-project/sherlock.git ~/tools/sherlock)" > /dev/null 2>&1;
-	    
-	    echo -e -n " - \e[34mInstalacja requirements\e[0m";    
-            
-            sh -c "(sudo python3 -m pip install -r ~/tools/sherlock/requirements.txt)" > /dev/null 2>&1;
-	    
-	    echo -e " - \e[32mGotowe\e[0m";
-fi
-
-#Instalacja WhatsMyName
-if [[ -f ~/tools/WhatsMyName/whatsmyname.sh ]];then
-        echo -e "\e[32mWhatsMyName juz zainstalowane\e[0m"
-else
-        echo -e -n "\e[91mBrak WhatsMyName\e[0m"
-        echo -e -n " - \e[34mInstalacja WhatsMyName\e[0m"
-	    echo -e -n " - \e[34mGit clone\e[0m";
-            
-            sh -c "(git clone https://github.com/WebBreacher/WhatsMyName ~/tools/WhatsMyName)" > /dev/null 2>&1;
-	    
-	    echo -e -n " - \e[34mInstalacja requirements\e[0m";    
-            
-            sh -c "(sudo python3 -m pip install -r ~/tools/WhatsMyName/requirements.txt)" > /dev/null 2>&1;
-	    
-	    echo -e " - \e[32mGotowe\e[0m";
-fi
-
-#Instalacja dirsearch
-if [[ -d ~/tools/dirsearch ]];then
-        echo -e "\e[32mdirsearch juz zainstalowane\e[0m"
-else
-        echo -e -n "\e[91mBrak dirsearch\e[0m"
-        echo -e -n " - \e[34mInstalacja dirsearch\e[0m"
-	    echo -e -n " - \e[34mGit clone\e[0m";
-            
-            sh -c "(git clone https://github.com/maurosoria/dirsearch.git ~/tools/dirsearch)" > /dev/null 2>&1;
-	    
-	    echo -e " - \e[32mGotowe\e[0m";
-fi
 
 #ustawienie ZSH jako natywny shell dla mojego usera
-echo -e -n " - \e[34mUstawienie ZSH natywnym shell\e[0m"
-chsh -s $(which zsh);
-echo -e " - \e[32mGotowe\e[0m";
+echo -e " - \e[34mUstawienie ZSH natywnym shell\e[0m"
+#chsh -s $(which zsh);
+echo -e -n " - \e[32mOdkomentować!!\e[0m";
+echo -e -n " - \e[32mGotowe\e[0m";
 
 echo -e "\e[41mReboot\e[0m";
 echo "";
-sudo reboot
+sleep 10
+echo -e -n " - \e[32mOdkomentować!!\e[0m";
+#sudo reboot
 
 #TODO:
 #Przeglad i dodanie narzedzi z : https://github.com/AlexisAhmed/BugBountyToolkit
-#Przeglad i dodanie narzedzi z : https://github.com/nahamsec/bbht
