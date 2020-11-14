@@ -34,8 +34,19 @@ else
 
     echo -e " - \e[32mGotowe\e[0m";
 fi
+
+if [[ -d ~/dane ]];then
+    echo -e "\e[32mkatalog ~/dane istnieje\e[0m"
+else
+    echo -e -n "\e[91mBrak katalogu ~/dane\e[0m"
+    echo -e -n " - \e[34mTworze katalog ~/dane\e[0m"
+
+            mkdir ~/dane
+
+    echo -e " - \e[32mGotowe\e[0m";
+fi
 #----------------------------------------------------------------------------------------------------------------------------------------------
-#W fasie testowania pętla instalacyjna po sprawdzeniu przejdziemy na kilka pętli do instalacji wszyskiego
+
 dodatek="libcurl4-openssl-dev libssl-dev  ruby-full ruby-dev libxml2 libxml2-dev build-essential libffi-dev python-dev 
   libxslt1-dev libgmp-dev zlib1g-dev python-setuptools libldns-dev python3-dnspython python2-dnspython"
 
@@ -47,7 +58,8 @@ for dodatekA in $dodatek; do
         echo -e " - \e[32mGotowe\e[0m";
 done
 
-aplikacje="rename jq xargs unzip curl wget git whois python2 python3 autojump zsh sqlmap nmap masscan recon-ng"
+aplikacje="rename jq xargs unzip curl wget git whois python2 python3 autojump zsh sqlmap nmap masscan recon-ng xvfb phantomjs dirb build-essential 
+gcc vim awscli inetutils-ping make whois perl nikto dnsutils net-tools tmux hydra dnsrecon"
 for aplikacja in $aplikacje; do
     if command -v $aplikacja &> /dev/null 2>&1; then
     	echo -e "\e[32m$aplikacja juz zainstalowany\e[0m"
@@ -85,12 +97,22 @@ gitInstall="
                 https://github.com/maurosoria/dirsearch.git
                 https://github.com/nahamsec/lazys3.git
                 https://github.com/nahamsec/crtndstry.git
-                https://github.com/danielmiessler/SecLists.git
                 https://github.com/nahamsec/lazyrecon.git
                 https://github.com/jobertabma/virtual-host-discovery.git
                 https://github.com/s0md3v/Striker.git
                 https://github.com/s0md3v/Photon.git
-                https://github.com/pwn0sec/PwnXSS
+                https://github.com/pwn0sec/PwnXSS.git
+                https://github.com/blechschmidt/massdns.git
+                https://github.com/scipag/vulscan.git
+                https://github.com/maaaaz/webscreenshot.git
+                https://github.com/infosec-au/altdns.git
+                https://github.com/s0md3v/XSStrike.git
+                https://github.com/urbanadventurer/WhatWeb.git
+                https://github.com/AlexisAhmed/bucket_finder.git 
+                https://github.com/enablesecurity/wafw00f.git
+                https://github.com/AlexisAhmed/theHarvester.git 
+                https://github.com/christophetd/CloudFlair.git 
+                https://github.com/AlexisAhmed/bucket_finder.git 
 "
 
 for aplikacja in $gitInstall; do
@@ -123,6 +145,7 @@ goInstall=" github.com/michenriksen/aquatone
             github.com/Emoe/kxss
             github.com/OJ/gobuster
             github.com/ffuf/ffuf
+            github.com/projectdiscovery/subfinder/cmd/subfinder
 "
 
 for aplikacja in $goInstall; do
@@ -194,9 +217,8 @@ for aplikacja in $gemInstall; do
     fi
 done
 
-
 #----------------------------------------------------------------------------------------------------------------------------------------------
-#instalacja pakietw apt Linux 
+#instalacja pakietw niestandardowych >3 takie przechodzi na pętle
 
 if command python2 -m pip --version &> /dev/null 2>&1; then
         echo -e "\e[32mpython2-pip juz zainstalowany\e[0m"
@@ -231,6 +253,22 @@ else
         
         echo -e " - \e[32mGotowe\e[0m";
 fi
+
+#Make massdns
+        echo -e -n "\e[91mMake massdns\e[0m"
+        cd ~/tools/massdns
+        make 
+        echo -e " - \e[32mGotowe\e[0m";
+
+#Dodanie ln vulscan
+        echo -e -n "\e[91mln -s dla vulscan\e[0m"
+        sudo ln -s ~tools/vulscan /usr/share/nmap/scripts/vulscan    
+        echo -e " - \e[32mGotowe\e[0m";
+
+#Instalacja pip3 webscreenschot 
+        echo -e -n "\e[91mpip3 install  webscreenshot\e[0m"
+        pip3 install webscreenshot  
+        echo -e " - \e[32mGotowe\e[0m";
 
 #----------------------------------------------------------------------------------------------------------------------------------------------
 #instalacja OhMyZSH
@@ -388,8 +426,6 @@ else
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
-
-
 #Instalacja httpx
 if command -v httpx &> /dev/null 2>&1; then
         echo -e "\e[32mhttpx juz zainstalowane\e[0m"
@@ -427,17 +463,33 @@ else
 fi
 
 
+# SecLists
+read -p "Czy dodać SecLists? y/n " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo -e -n " - \e[34mPobieranie SecList\e[0m";
+        git clone https://github.com/danielmiessler/SecLists.git ~/tools/SecLists > /dev/null 2>&1;
+    echo -e " - \e[32mGotowe\e[0m";
+fi
+
 #ustawienie ZSH jako natywny shell dla mojego usera
-echo -e " - \e[34mUstawienie ZSH natywnym shell\e[0m"
-#chsh -s $(which zsh);
-echo -e -n " - \e[32mOdkomentować!!\e[0m";
-echo -e -n " - \e[32mGotowe\e[0m";
+read -p "Ustawic ZSH natywnym shell? y/n " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo -e "\e[34mUstawienie ZSH natywnym shell\e[0m"
+        chsh -s $(which zsh);
+    echo -e -n " - \e[32mGotowe\e[0m";
+fi
 
-echo -e "\e[41mReboot\e[0m";
-echo "";
-sleep 10
-echo -e -n " - \e[32mOdkomentować!!\e[0m";
-#sudo reboot
-
-#TODO:
-#Przeglad i dodanie narzedzi z : https://github.com/AlexisAhmed/BugBountyToolkit
+# Reboot
+read -p "Wykonanie restartu po wyczyszczeniu? y/n " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo -e "\e[34mCzyszczenie\e[0m"
+    apt-get clean
+    echo -e -n "\e[41mReboot\e[0m";
+else
+    echo -e "\e[34mCzyszczenie\e[0m"
+    apt-get clean
+    echo -e -n " - \e[32mGotowe\e[0m";
+fi
