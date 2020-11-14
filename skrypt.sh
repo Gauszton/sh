@@ -249,7 +249,7 @@ fi
 
 #Dodanie ln vulscan
         
-        if [[ -f /usr/share/nmap/scripts/vulscan ]];then
+        if [[ -L /usr/share/nmap/scripts/vulscan ]];then
             echo -e "\e[32mln -s dla vulscan wystepuje\e[0m"
         else
             echo -e -n "\e[91mln -s dla vulscan\e[0m"
