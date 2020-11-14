@@ -441,6 +441,24 @@ else
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
+#Instalacja gau
+if command -v gau &> /dev/null 2>&1; then
+        echo -e "\e[32mgau juz zainstalowane\e[0m"
+else
+        echo -e -n "\e[91mBrak gau\e[0m"
+        echo -e -n " - \e[34mInstalacja gau\e[0m"
+        echo -e -n " - \e[34mPobieranie\e[0m";
+
+            sh -c "(wget https://github.com/lc/gau/releases/download/v1.0.7/gau_1.0.7_linux_amd64.tar.gz -P ~/tools/gau)" > /dev/null 2>&1;
+
+        echo -e -n " - \e[34mInstalacja\e[0m";
+
+            tar -xvf ~/tools/gau/gau_1.0.7_linux_amd64.tar.gz -C ~/tools/gau/ > /dev/null 2>&1;
+            sudo mv ~/tools/gau/gau /usr/bin/gau
+
+        echo -e " - \e[32mGotowe\e[0m";
+fi
+
 #ustawienie ZSH jako natywny shell dla mojego usera
 echo -e -n " - \e[34mUstawienie ZSH natywnym shell\e[0m"
 chsh -s $(which zsh);
