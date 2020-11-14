@@ -26,24 +26,11 @@ Testowane:
 =======
   - Ubuntu 20.04 LTS 
 
-Lista narzędzi z GITHUB: 
-=======
-  - ZSH, OhMyZSH oraz pluginy,
-  - HydraRebon ( https://github.com/aufzayed/HydraRecon.git )
-  - Sublist3r ( https://github.com/aboul3la/Sublist3r.git )
-  - knock ( https://github.com/guelfoweb/knock.git )
-  - httpx ( https://github.com/projectdiscovery/httpx/ )
-  - gau ( https://github.com/lc/gau/ )
-  - sherlock ( https://github.com/sherlock-project/sherlock.git )
-  - WhatsMyName ( https://github.com/WebBreacher/WhatsMyName )
-  - dirsearch ( https://github.com/maurosoria/dirsearch.git )
-  ...
-
 ToDo:
 =======
- - Kolejne narzędzia ( wypełnienie mojej listy )
- - optymalizacja skryptu 
- - logowanie do logu w /var/logs
+ ~~- Kolejne narzędzia ( wypełnienie mojej listy )~~
+ ~~- optymalizacja skryptu ~~
+ ~~- logowanie do logu w /var/log~~
  - możliwość aktualizacji narzędzi z git repo za pomoca jednego skryptu 
  - wybranie poprzez argument skryptu czy będzie to wersja serwer ( tylko narzędzia CLI ) czy GUI dodatkowe narzędzia GUI, 
  - wykonywanie skryptu poprzez SSH, 
