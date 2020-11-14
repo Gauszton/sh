@@ -334,33 +334,39 @@ fi
 
 #Instalacja sublister
 if [[ -d ~/tools/Sublist3r ]];then
-    echo -e "\e[32mSublist3r juz zainstalowane\e[0m"
+        echo -e "\e[32mSublist3r juz zainstalowane\e[0m"
 else
-    echo -e -n "\e[91mBrak Sublist3r\e[0m"
-    echo -e -n " - \e[34mInstalacja Sublist3r\e[0m"
-	sh -c "(git clone https://github.com/aboul3la/Sublist3r.git ~/tools/Sublist3r)" > /dev/null 2>&1;
-	echo -e -n " - \e[34mGit clone\e[0m";
-	sh -c "(sudo pip3 install -r ~/tools/Sublist3r/requirements.txt)" > /dev/null 2>&1;
-	echo -e -n " - \e[34mInstalacja requirements\e[0m";
-	echo -e " - \e[32mGotowe\e[0m";
+        echo -e -n "\e[91mBrak Sublist3r\e[0m"
+        echo -e -n " - \e[34mInstalacja Sublist3r\e[0m"
+	
+            sh -c "(git clone https://github.com/aboul3la/Sublist3r.git ~/tools/Sublist3r)" > /dev/null 2>&1;
+	    
+        echo -e -n " - \e[34mGit clone\e[0m";
+	        
+            sh -c "(sudo pip3 install -r ~/tools/Sublist3r/requirements.txt)" > /dev/null 2>&1;
+	    
+        echo -e -n " - \e[34mInstalacja requirements\e[0m";
+	    echo -e " - \e[32mGotowe\e[0m";
 fi
 
 #Instalacja Knock.py
 if [[ -d ~/tools/knock ]];then
-    echo -e "\e[32mKnock.py juz zainstalowane\e[0m"
+        echo -e "\e[32mKnock.py juz zainstalowane\e[0m"
 else
-    echo -e -n "\e[91mBrak knock.py\e[0m"
-    echo -e -n " - \e[34mInstalacja knock.py\e[0m"
-	sh -c "(git clone https://github.com/guelfoweb/knock.git ~/tools/knock)" > /dev/null 2>&1;
-	echo -e -n " - \e[34mGit clone\e[0m";
+        echo -e -n "\e[91mBrak knock.py\e[0m"
+        echo -e -n " - \e[34mInstalacja knock.py\e[0m"
 	
-	sh -c "(sudo apt install python3-dnspython -y)" > /dev/null 2>&1;
-    sh -c "(sudo apt install python2-dnspython -y)" > /dev/null 2>&1;
-
-    sh -c "(sudo pip3 install -r ~/tools/knock/requirements.txt)" > /dev/null 2>&1;
-	sh -c "(sudo python2 ~/tools/knock/setup.py install)" > /dev/null 2>&1;
-	echo -e -n " - \e[34mInstalacja requirements\e[0m";
-	echo -e " - \e[32mGotowe\e[0m";
+            sh -c "(git clone https://github.com/guelfoweb/knock.git ~/tools/knock)" > /dev/null 2>&1;
+	    
+        echo -e -n " - \e[34mGit clone\e[0m";
+	
+	        sh -c "(sudo apt install python3-dnspython -y)" > /dev/null 2>&1;
+            sh -c "(sudo apt install python2-dnspython -y)" > /dev/null 2>&1;
+            sh -c "(sudo pip3 install -r ~/tools/knock/requirements.txt)" > /dev/null 2>&1;
+	        sh -c "(sudo python2 ~/tools/knock/setup.py install)" > /dev/null 2>&1;
+	    
+        echo -e -n " - \e[34mInstalacja requirements\e[0m";
+	    echo -e " - \e[32mGotowe\e[0m";
 fi
 
 #ustawienie ZSH jako natywny shell dla mojego usera
