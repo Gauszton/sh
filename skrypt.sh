@@ -98,7 +98,7 @@ gitInstall="
                 https://github.com/enablesecurity/wafw00f.git
                 https://github.com/AlexisAhmed/theHarvester.git 
                 https://github.com/christophetd/CloudFlair.git 
-                https://github.com/AlexisAhmed/bucket_finder.git 
+                 
 "
 #github.com/projectdiscovery/subfinder.git
 for aplikacja in $gitInstall; do
@@ -168,7 +168,7 @@ for aplikacja in $gitInstallSetup; do
     			sh -c "(sudo python3 -m pip install -r ~/tools/$(basename $aplikacja .git)/requirements.txt)" >> /var/log/skryptgauszton.log 2>&1;
     			
     			echo -n -e " - \e[34mInstalacja setup.py \e[0m"
-    			sh -c "(sudo python ~/tools/$(basename $aplikacja .git)/setup.py install)" >> /var/log/skryptgauszton.log 2>&1;
+    			sh -c "(sudo python3 ~/tools/$(basename $aplikacja .git)/setup.py install)" >> /var/log/skryptgauszton.log 2>&1;
     			
     			
     			echo -e " - \e[32mGotowe\e[0m";
