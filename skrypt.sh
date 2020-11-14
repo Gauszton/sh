@@ -202,6 +202,17 @@ else
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
+if command -v amass &> /dev/null 2>&1; then
+        echo -e "\e[32mamass juz zainstalowany\e[0m"
+else
+        echo -e -n "\e[91mBrak amass\e[0m"
+        echo -n -e " - \e[34mInstalacja amass\e[0m"
+
+                sudo snap install amass > /dev/null 2>&1;
+
+        echo -e " - \e[32mGotowe\e[0m";
+fi
+
 #----------------------------------------------------------------------------------------------------------------------------------------------
 #instalacja OhMyZSH
 if [[ -d ~/.oh-my-zsh ]];then
