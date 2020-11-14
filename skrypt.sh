@@ -459,6 +459,53 @@ else
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
+#Instalacja sherlock
+if [[ -d ~/tools/sherlock ]];then
+        echo -e "\e[32msherlock juz zainstalowane\e[0m"
+else
+        echo -e -n "\e[91mBrak sherlock\e[0m"
+        echo -e -n " - \e[34mInstalacja sherlock\e[0m"
+	    echo -e -n " - \e[34mGit clone\e[0m";
+            
+            sh -c "(git clone https://github.com/sherlock-project/sherlock.git ~/tools/sherlock)" > /dev/null 2>&1;
+	    
+	    echo -e -n " - \e[34mInstalacja requirements\e[0m";    
+            
+            sh -c "(sudo python3 -m pip install -r ~/tools/sherlock/requirements.txt)" > /dev/null 2>&1;
+	    
+	    echo -e " - \e[32mGotowe\e[0m";
+fi
+
+#Instalacja WhatsMyName
+if [[ -f ~/tools/WhatsMyName/whatsmyname.sh ]];then
+        echo -e "\e[32mWhatsMyName juz zainstalowane\e[0m"
+else
+        echo -e -n "\e[91mBrak WhatsMyName\e[0m"
+        echo -e -n " - \e[34mInstalacja WhatsMyName\e[0m"
+	    echo -e -n " - \e[34mGit clone\e[0m";
+            
+            sh -c "(git clone https://github.com/WebBreacher/WhatsMyName ~/tools/WhatsMyName)" > /dev/null 2>&1;
+	    
+	    echo -e -n " - \e[34mInstalacja requirements\e[0m";    
+            
+            sh -c "(sudo python3 -m pip install -r ~/tools/WhatsMyName/requirements.txt)" > /dev/null 2>&1;
+	    
+	    echo -e " - \e[32mGotowe\e[0m";
+fi
+
+#Instalacja dirsearch
+if [[ -d ~/tools/dirsearch ]];then
+        echo -e "\e[32mdirsearch juz zainstalowane\e[0m"
+else
+        echo -e -n "\e[91mBrak dirsearch\e[0m"
+        echo -e -n " - \e[34mInstalacja dirsearch\e[0m"
+	    echo -e -n " - \e[34mGit clone\e[0m";
+            
+            sh -c "(git clone https://github.com/maurosoria/dirsearch.git ~/tools/dirsearch)" > /dev/null 2>&1;
+	    
+	    echo -e " - \e[32mGotowe\e[0m";
+fi
+
 #ustawienie ZSH jako natywny shell dla mojego usera
 echo -e -n " - \e[34mUstawienie ZSH natywnym shell\e[0m"
 chsh -s $(which zsh);
@@ -473,8 +520,6 @@ sudo reboot
 
 
 #TODO:
-#https://github.com/sherlock-project/sherlock
-#https://github.com/WebBreacher/WhatsMyName
 #Przeglad i dodanie narzedzi z : https://github.com/AlexisAhmed/BugBountyToolkit
 #Przeglad i dodanie narzedzi z : https://github.com/nahamsec/bbht
 #dirsearch
