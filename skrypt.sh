@@ -8,8 +8,8 @@ echo "##########################################################################
 echo "";
 # update i upgrade z wymuszeniem -y 
 echo "Update i Upgrade ";
-sudo apt update > /dev/null; 
-sudo apt upgrade -y > /dev/null;
+sudo apt update > /dev/null 2>&1; 
+sudo apt upgrade -y > /dev/null 2>&1;
 echo -e '\e[32mGotowe\e[0m';
 
 #dodanie katalogu tools
@@ -27,52 +27,52 @@ fi
 
 #instalacja pakietw przez apt install 
 
-if command -v unzip &> /dev/null; then
+if command -v unzip &> /dev/null 2>&1; then
     	echo -e "\e[32munzip juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak unzip\e[0m"
     echo -n -e " - \e[34mInstalacja unzip\e[0m"
-	sudo apt install unzip -y -qq > /dev/null;
+	sudo apt install unzip -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v curl &> /dev/null; then
+if command -v curl &> /dev/null 2>&1; then
     	echo -e "\e[32mcurl juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak curl\e[0m"
     echo -n -e " - \e[34mInstalacja curl\e[0m"
-	sudo apt install curl -y -qq > /dev/null;
+	sudo apt install curl -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v wget &> /dev/null; then
+if command -v wget &> /dev/null 2>&1; then
     echo -e "\e[32mwget juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak wget\e[0m"
     echo -n -e " - \e[34mInstalacja wget\e[0m"
-	sudo apt install wget -y -qq > /dev/null;
+	sudo apt install wget -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v git &> /dev/null; then
+if command -v git &> /dev/null 2>&1; then
     echo -e "\e[32mgit juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak Git\e[0m"
     echo -n -e " - \e[34mInstalacja git\e[0m"
-	sudo apt install git -y -qq > /dev/null;
+	sudo apt install git -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v python3 &> /dev/null; then
+if command -v python3 &> /dev/null 2>&1; then
     echo -e "\e[32mpython3 juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak python3\e[0m"
     echo -n -e " - \e[34mInstalacja python3\e[0m"
-	sudo apt install python3 -y -qq > /dev/null;
+	sudo apt install python3 -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command python3 -m pip --version &> /dev/null; then
+if command python3 -m pip --version &> /dev/null 2>&1; then
     	echo -e "\e[32mpython3-pip juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak python3-pip\e[0m"
@@ -81,43 +81,43 @@ else
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command go version &> /dev/null; then
+if command go version &> /dev/null 2>&1; then
     echo -e "\e[32mgolang juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak golang\e[0m"
     echo -n -e " - \e[34mInstalacja golang\e[0m"
-	sudo apt install golang -y -qq > /dev/null;
+	sudo apt install golang -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v autojump &> /dev/null; then
+if command -v autojump &> /dev/null 2>&1; then
     echo -e "\e[32mautojump juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak autojump\e[0m"
     echo -n -e " - \e[34mInstalacja autojump\e[0m"
-	sudo apt install autojump -y -qq > /dev/null;
+	sudo apt install autojump -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v zsh &> /dev/null; then
+if command -v zsh &> /dev/null 2>&1; then
     echo -e "\e[32mzsh juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak zsh\e[0m"
     echo -n -e " - \e[34mInstalacja zsh\e[0m"
-	sudo apt install zsh -y -qq > /dev/null;
+	sudo apt install zsh -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command pip2 -v  &> /dev/null; then
+if command pip2 -v  &> /dev/null 2>&1; then
     echo -e "\e[32mpython2 juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak python2\e[0m"
     echo -n -e " - \e[34mInstalacja python2\e[0m"
-	sudo apt install python2 -y -qq > /dev/null;
+	sudo apt install python2 -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command python2 -m pip --version &> /dev/null; then
+if command python2 -m pip --version &> /dev/null 2>&1; then
     echo -e "\e[32mpython2-pip juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak python2-pip\e[0m"
@@ -129,39 +129,39 @@ else
 	
 fi
 
-if command -v sqlmap &> /dev/null; then
+if command -v sqlmap &> /dev/null 2>&1; then
     echo -e "\e[32msqlmap juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak sqlmap\e[0m"
     echo -n -e " - \e[34mInstalacja sqlmap\e[0m"
-	sudo apt install sqlmap -y -qq > /dev/null;
+	sudo apt install sqlmap -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v nmap &> /dev/null; then
+if command -v nmap &> /dev/null 2>&1; then
     echo -e "\e[32mnmap juz zainstalowany\e[0m"
 else
     echo -e -n "\e[91mBrak nmap\e[0m"
    	echo -n -e " - \e[34mInstalacja nmap\e[0m"
-	sudo apt install nmap -y -qq > /dev/null;
+	sudo apt install nmap -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v masscan &> /dev/null; then
+if command -v masscan &> /dev/null 2>&1; then
     	echo -e "\e[32mmasscan juz zainstalowany\e[0m"
 else   
     echo -e -n "\e[91mBrak masscan\e[0m"
    	echo -n -e " - \e[34mInstalacja masscan\e[0m"
-	sudo apt install masscan -y -qq > /dev/null;
+	sudo apt install masscan -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
-if command -v whois &> /dev/null; then
+if command -v whois &> /dev/null 2>&1; then
     	echo -e "\e[32mwhois juz zainstalowany\e[0m"
 else   
     echo -e -n "\e[91mBrak whois\e[0m"
    	echo -n -e " - \e[34mInstalacja whois\e[0m"
-	sudo apt install whois -y -qq > /dev/null;
+	sudo apt install whois -y -qq > /dev/null 2>&1;
 	echo -e " - \e[32mGotowe\e[0m";
 fi
 
