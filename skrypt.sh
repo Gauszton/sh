@@ -27,6 +27,15 @@ fi
 
 #instalacja pakietw przez apt install 
 
+if command -v unzip &> /dev/null; then
+    	echo -e "\e[32munzip juz zainstalowany\e[0m"
+else
+    echo -e -n "\e[91mBrak unzip\e[0m"
+    echo -n -e " - \e[34mInstalacja unzip\e[0m"
+	sudo apt install unzip -y -qq > /dev/null;
+	echo -e " - \e[32mGotowe\e[0m";
+fi
+
 if command -v curl &> /dev/null; then
     	echo -e "\e[32mcurl juz zainstalowany\e[0m"
 else
@@ -317,7 +326,7 @@ else
 	
 	sh -c "(sudo apt install python3-dnspython -y)" > /dev/null 2>&1;
     sh -c "(sudo apt install python2-dnspython -y)" > /dev/null 2>&1;
-    
+
     sh -c "(sudo pip3 install -r ~/tools/knock/requirements.txt)" > /dev/null 2>&1;
 	sh -c "(sudo python2 ~/tools/knock/setup.py install)" > /dev/null 2>&1;
 	echo -e -n " - \e[34mInstalacja requirements\e[0m";
