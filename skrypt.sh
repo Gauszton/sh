@@ -13,38 +13,21 @@ sudo apt upgrade -y > /dev/null 2>&1;
 echo -e '\e[32mGotowe\e[0m';
 
 #Tworzenie struktury katalogów
-if [[ -d ~/tools ]];then
-    echo -e "\e[32mkatalog ~/tools istnieje\e[0m"
-else
-    echo -e -n "\e[91mBrak katalogu ~/tools\e[0m"
-    echo -e -n " - \e[34mTworze katalog ~/tools\e[0m"
+katalogi="tools tools/other dane"
 
-            mkdir ~/tools
+for katalog in $katalogi; do
+	if [[ -d ~/$katalog/ ]];then
+    		echo -e "\e[32mkatalog $katalog istnieje\e[0m"
+	else
+    		echo -e -n "\e[91mBrak katalogu $katalog\e[0m"
+    		echo -e -n " - \e[34mTworze katalog $katalog\e[0m"
 
-    echo -e " - \e[32mGotowe\e[0m";
-fi
+            		mkdir ~/$katalog
 
-if [[ -d ~/tools/other ]];then
-    echo -e "\e[32mkatalog ~/tools/other istnieje\e[0m"
-else
-    echo -e -n "\e[91mBrak katalogu ~/tools/other\e[0m"
-    echo -e -n " - \e[34mTworze katalog ~/tools/other\e[0m"
+    		echo -e " - \e[32mGotowe\e[0m";
+	fi
 
-            mkdir ~/tools/other
-
-    echo -e " - \e[32mGotowe\e[0m";
-fi
-
-if [[ -d ~/dane ]];then
-    echo -e "\e[32mkatalog ~/dane istnieje\e[0m"
-else
-    echo -e -n "\e[91mBrak katalogu ~/dane\e[0m"
-    echo -e -n " - \e[34mTworze katalog ~/dane\e[0m"
-
-            mkdir ~/dane
-
-    echo -e " - \e[32mGotowe\e[0m";
-fi
+done
 #----------------------------------------------------------------------------------------------------------------------------------------------
 
 dodatek="libcurl4-openssl-dev libssl-dev  ruby-full ruby-dev libxml2 libxml2-dev build-essential libffi-dev python-dev 
@@ -210,7 +193,7 @@ for aplikacja in $gemInstall; do
 	
     		echo -n -e " - \e[34mInstalacja\e[0m"
     		cd ~/tools/$(basename $aplikacja .git)
-    		sudo gem install bundler > /dev/null 2>&1 && bundle install --without test > /dev/null 2>&1;
+    		sudo gem install bundler > /dev/null 2>&1 && sudo bundle install --without test > /dev/null 2>&1;
     			
     		echo -e " - \e[32mGotowe\e[0m";
     		
@@ -257,7 +240,7 @@ fi
 #Make massdns
         echo -e -n "\e[91mMake massdns\e[0m"
         cd ~/tools/massdns
-        make 
+        sudo make 
         echo -e " - \e[32mGotowe\e[0m";
 
 #Dodanie ln vulscan
@@ -267,7 +250,7 @@ fi
 
 #Instalacja pip3 webscreenschot 
         echo -e -n "\e[91mpip3 install  webscreenshot\e[0m"
-        pip3 install webscreenshot  
+        pip3 install webscreenshot > /dev/null 2>&1; 
         echo -e " - \e[32mGotowe\e[0m";
 
 #----------------------------------------------------------------------------------------------------------------------------------------------
@@ -462,16 +445,16 @@ else
         echo -e " - \e[32mGotowe\e[0m";
 fi
 
-
+echo "";
 # SecLists
 read -p "Czy dodać SecLists? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    echo -e -n " - \e[34mPobieranie SecList\e[0m";
+    echo -e " - \e[34mPobieranie SecList\e[0m";
         git clone https://github.com/danielmiessler/SecLists.git ~/tools/SecLists > /dev/null 2>&1;
-    echo -e " - \e[32mGotowe\e[0m";
+    echo -e -n" - \e[32mGotowe\e[0m";
 fi
-
+echo "";
 #ustawienie ZSH jako natywny shell dla mojego usera
 read -p "Ustawic ZSH natywnym shell? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -480,7 +463,7 @@ then
         chsh -s $(which zsh);
     echo -e -n " - \e[32mGotowe\e[0m";
 fi
-
+echo "";
 # Reboot
 read -p "Wykonanie restartu po wyczyszczeniu? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -493,3 +476,4 @@ else
     apt-get clean
     echo -e -n " - \e[32mGotowe\e[0m";
 fi
+echo "";
