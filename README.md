@@ -32,6 +32,11 @@ Lista narzędzi z GITHUB:
   - HydraRebon ( https://github.com/aufzayed/HydraRecon.git )
   - Sublist3r ( https://github.com/aboul3la/Sublist3r.git )
   - knock ( https://github.com/guelfoweb/knock.git )
+  - httpx ( https://github.com/projectdiscovery/httpx/ )
+  - gau ( https://github.com/lc/gau/ )
+  - sherlock ( https://github.com/sherlock-project/sherlock.git )
+  - WhatsMyName ( https://github.com/WebBreacher/WhatsMyName )
+  - dirsearch ( https://github.com/maurosoria/dirsearch.git )
 
 ToDo:
 =======
