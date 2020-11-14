@@ -303,7 +303,6 @@ if [[ -d ~/tools/HydraRecon ]];then
 else
     echo -e -n "\e[91mBrak HydraRecon\e[0m"
     echo -e -n " - \e[34mInstalacja HydraRecon\e[0m"
-	cd ~/tools; 
 	sh -c "(git clone https://github.com/aufzayed/HydraRecon.git ~/tools/HydraRecon)" > /dev/null 2>&1;
 	echo -e -n " - \e[34mGit clone\e[0m";
 	sh -c "(pip3 install -r ~/tools/HydraRecon/requirements.txt)" > /dev/null 2>&1;
@@ -317,7 +316,6 @@ if [[ -d ~/tools/Sublist3r ]];then
 else
     echo -e -n "\e[91mBrak Sublist3r\e[0m"
     echo -e -n " - \e[34mInstalacja Sublist3r\e[0m"
-	cd ~/tools; 
 	sh -c "(git clone https://github.com/aboul3la/Sublist3r.git ~/tools/Sublist3r)" > /dev/null 2>&1;
 	echo -e -n " - \e[34mGit clone\e[0m";
 	sh -c "(sudo pip3 install -r ~/tools/Sublist3r/requirements.txt)" > /dev/null 2>&1;
@@ -358,4 +356,4 @@ sudo reboot
 #https://github.com/WebBreacher/WhatsMyName
 #Przeglad i dodanie narzedzi z : https://github.com/AlexisAhmed/BugBountyToolkit
 #Przeglad i dodanie narzedzi z : https://github.com/nahamsec/bbht
-dirsearch
+#dirsearch
