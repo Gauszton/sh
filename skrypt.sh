@@ -15,25 +15,25 @@ echo -e '\e[32mGotowe\e[0m';
 #dodanie katalogu tools i other
 
 if [[ -d ~/tools ]];then
-        echo -e "\e[32mkatalog ~/tools istnieje\e[0m"
+    echo -e "\e[32mkatalog ~/tools istnieje\e[0m"
 else
-        echo -e -n "\e[91mBrak katalogu ~/tools\e[0m"
-        echo -e -n " - \e[34mTworze katalog ~/tools\e[0m"
+    echo -e -n "\e[91mBrak katalogu ~/tools\e[0m"
+    echo -e -n " - \e[34mTworze katalog ~/tools\e[0m"
 
-                mkdir ~/tools
+            mkdir ~/tools
 
-        echo -e " - \e[32mGotowe\e[0m";
+    echo -e " - \e[32mGotowe\e[0m";
 fi
 
 if [[ -d ~/tools/other ]];then
-        echo -e "\e[32mkatalog ~/tools/other istnieje\e[0m"
+    echo -e "\e[32mkatalog ~/tools/other istnieje\e[0m"
 else
-        echo -e -n "\e[91mBrak katalogu ~/tools/other\e[0m"
-        echo -e -n " - \e[34mTworze katalog ~/tools/other\e[0m"
+    echo -e -n "\e[91mBrak katalogu ~/tools/other\e[0m"
+    echo -e -n " - \e[34mTworze katalog ~/tools/other\e[0m"
 
-                mkdir ~/tools/other
+            mkdir ~/tools/other
 
-        echo -e " - \e[32mGotowe\e[0m";
+    echo -e " - \e[32mGotowe\e[0m";
 fi
 
 #instalacja pakietw przez apt install 
@@ -251,14 +251,14 @@ fi
 
 #echo "Dodanie klucza prywatnego"
 if [[ -d ~/.ssh ]];then
-        echo -e "\e[32mKatalog ~/.ssh istnieje\e[0m"
+    echo -e "\e[32mKatalog ~/.ssh istnieje\e[0m"
 else
-        echo -e -n "\e[91mBrak katalogu ~/.ssh\e[0m"
-        echo -e -n " - \e[34mTworze\e[0m"
+    echo -e -n "\e[91mBrak katalogu ~/.ssh\e[0m"
+    echo -e -n " - \e[34mTworze\e[0m"
 
-                mkdir ~/.ssh
+            mkdir ~/.ssh
 
-        echo -e " - \e[32mGotowe\e[0m";
+    echo -e " - \e[32mGotowe\e[0m";
 
 fi
 
@@ -269,7 +269,7 @@ else
     echo -e -n "\e[91mBrak pliku ~/.ssh/authorized_keys istnieje\e[0m"
     echo -e -n " - \e[34mTworze\e[0m"
 
-                touch ~/.ssh/authorized_keys
+            touch ~/.ssh/authorized_keys
 
     echo -e " - \e[32mGotowe\e[0m";
 fi
@@ -278,11 +278,11 @@ if [[ $(curl -sb -H "Accept: application/txt" "https://raw.githubusercontent.com
 	echo -e "\e[32mKlucz autrozided_keys w aktualnej wersji zgodnej z Github.com/Gauszton/kay\e[0m"
 else
 	echo -e -n "\e[91mBrak mojego klucza w pliku authorized_keys\e[0m"
-        echo -e -n " - \e[32mDodaje moj klucz\e[0m"
+    echo -e -n " - \e[32mDodaje moj klucz\e[0m"
 
-            echo 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAwTDJ2wBreFKIg6WeSIbi4XwvK3gIm1YI+c0u1s7vXoV6CCq4QQkWvJ7eXCUb8fE1Fe+T7OU4ssOiUq4TkKeRnHSDlsr9i/ln1XI4SsXM5VMxp01lFZAjilPQpJDd6Fd+Px2Sc5AuKCCNycmeFdbEvT45iCYLa29znhjqIYjg242GoyBvj6nBGdXqbeoRLe67Sszsh1EJnWEIEW4izzgGZU7v/JZ9m8u8Fj76SXAu2ho4oF/ddFJ11ktNu8sBAOAcdUb/y+dNi76KfzWC9UpqK/aZ/TL4S/zM+x9f1lVOWLfI9L3NvIcTaJk/PzPiC8ALgRwBfO73Sf+84gnS91ULiQ== rsa-key-20200730' > ~/.ssh/authorized_keys
+        echo 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAwTDJ2wBreFKIg6WeSIbi4XwvK3gIm1YI+c0u1s7vXoV6CCq4QQkWvJ7eXCUb8fE1Fe+T7OU4ssOiUq4TkKeRnHSDlsr9i/ln1XI4SsXM5VMxp01lFZAjilPQpJDd6Fd+Px2Sc5AuKCCNycmeFdbEvT45iCYLa29znhjqIYjg242GoyBvj6nBGdXqbeoRLe67Sszsh1EJnWEIEW4izzgGZU7v/JZ9m8u8Fj76SXAu2ho4oF/ddFJ11ktNu8sBAOAcdUb/y+dNi76KfzWC9UpqK/aZ/TL4S/zM+x9f1lVOWLfI9L3NvIcTaJk/PzPiC8ALgRwBfO73Sf+84gnS91ULiQ== rsa-key-20200730' > ~/.ssh/authorized_keys
 
-        echo -e " - \e[32mGotowe\e[0m";
+    echo -e " - \e[32mGotowe\e[0m";
 fi
 
 #dodanie m do sudersow
@@ -312,7 +312,7 @@ fi
 
 #Instalacja sublister
 if [[ -d ~/tools/Sublist3r ]];then
-        echo -e "\e[32mSublist3r juz zainstalowane\e[0m"
+    echo -e "\e[32mSublist3r juz zainstalowane\e[0m"
 else
     echo -e -n "\e[91mBrak Sublist3r\e[0m"
     echo -e -n " - \e[34mInstalacja Sublist3r\e[0m"
@@ -325,7 +325,7 @@ fi
 
 #Instalacja Knock.py
 if [[ -d ~/tools/knock ]];then
-        echo -e "\e[32mKnock.py juz zainstalowane\e[0m"
+    echo -e "\e[32mKnock.py juz zainstalowane\e[0m"
 else
     echo -e -n "\e[91mBrak knock.py\e[0m"
     echo -e -n " - \e[34mInstalacja knock.py\e[0m"
